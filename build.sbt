@@ -35,6 +35,9 @@ lazy val `akka-http-json` =
     )
     .settings(settings)
     .settings(
+      inThisBuild(Seq(
+        publishTo := Some("releases" at "https://nexus.com/nexus/content/repositories/releases")
+      )),
       Compile / unmanagedSourceDirectories := Seq.empty,
       Test / unmanagedSourceDirectories    := Seq.empty,
       publishArtifact := false
@@ -179,7 +182,7 @@ lazy val library =
       val akkaHttp            = "10.1.8"
       val argonaut            = "6.2.3"
       val avro4s              = "1.9.0"
-      val circe               = "0.11.1"
+      val circe               = "0.12.0-M4"
       val jacksonModuleScala  = "2.9.9"
       val jsoniterScalaMacros = "0.51.1"
       val json4s              = "3.6.6"
@@ -220,7 +223,7 @@ lazy val settings =
 
 lazy val commonSettings =
   Seq(
-    scalaVersion := "2.12.8",
+    scalaVersion := "2.13.0",
     crossScalaVersions := Seq(scalaVersion.value, "2.11.12"),
     organizationName := "Heiko Seeberger",
     startYear := Some(2015),
@@ -237,7 +240,6 @@ lazy val commonSettings =
 
 lazy val gitSettings =
   Seq(
-    git.useGitDescribe := true
   )
 
 lazy val scalafmtSettings =
